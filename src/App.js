@@ -20,6 +20,7 @@ class App extends React.Component {
       this.handleInput = this.handleInput.bind(this);
       this.addItem = this.addItem.bind(this);
       this.deleteItem = this.deleteItem.bind(this);
+      this.setUpdate = this.setUpdate.bind(this);
   }
 
   handleInput(e) {
@@ -50,6 +51,17 @@ class App extends React.Component {
       item.key !== key);
     this.setState({
       items:filterItems,
+    })
+  }
+  setUpdate(text, key) {
+    const items = this.state.items;
+    items.map(item => {
+      if (item.key === key) { 
+        item.text=text
+      }
+    })
+    this.setState({
+      items:items,
     })
   }
   render() {
